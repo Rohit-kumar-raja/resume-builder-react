@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRoutes,BrowserRouter as Router } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Index from './pages/Index';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Preview from './pages/Preview';
+import Pricing from './pages/Pricing';
+import Template from './pages/Template';
+import Dashboard from './pages/Dashboard';
+import Register from './components/Register';
+import Login from './components/Login';
+const App = () => {
+  const routes = useRoutes([
+    { path: '/', element: <Index /> },
+    { path: 'about', element: <About /> },
+    { path: 'contact', element: <Contact /> },
+    { path: 'preview', element: <Preview /> },
+    { path: 'pricing', element: <Pricing /> },
+    { path: 'template', element: <Template /> },
+    { path: 'dashboard', element: <Dashboard /> },
 
-function App() {
+
+  ]);
+  return routes;
+};
+const AppWrapper = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Register/>
+      <Login/>
+      <App />
+      <Footer />
+    </Router>
   );
-}
+};
 
-export default App;
+export default AppWrapper;
